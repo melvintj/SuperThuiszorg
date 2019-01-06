@@ -141,27 +141,6 @@ INSERT INTO `client_ca` (`ClientID`, `ClientAvailabilityID`) VALUES
 ('C000009', 'CA000009');
 
 -- --------------------------------------------------------
-
---
--- Stand-in structuur voor view `completeuserinfo`
--- (Zie onder voor de actuele view)
---
-CREATE TABLE `completeuserinfo` (
-`UserID` varchar(7)
-,`FirstName` varchar(9)
-,`LastName` varchar(15)
-,`Address` varchar(21)
-,`Residence` varchar(14)
-,`Email` varchar(26)
-,`TelNumber` varchar(12)
-,`ClientID` varchar(7)
-,`InsuranceNumber` int(7)
-,`DoctorID` varchar(7)
-,`AcademicDegree` varchar(3)
-);
-
--- --------------------------------------------------------
-
 --
 -- Tabelstructuur voor tabel `doctor`
 --
@@ -448,14 +427,6 @@ INSERT INTO `userportal` (`UserID`, `PasswordID`) VALUES
 ('U000019', 'P000019');
 
 -- --------------------------------------------------------
-
---
--- Structuur voor de view `completeuserinfo`
---
-DROP TABLE IF EXISTS `completeuserinfo`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `completeuserinfo`  AS  select distinct `user`.`UserID` AS `UserID`,`user`.`FirstName` AS `FirstName`,`user`.`LastName` AS `LastName`,`user`.`Address` AS `Address`,`user`.`Residence` AS `Residence`,`user`.`Email` AS `Email`,`user`.`TelNumber` AS `TelNumber`,`client`.`ClientID` AS `ClientID`,`client`.`InsuranceNumber` AS `InsuranceNumber`,`doctor`.`DoctorID` AS `DoctorID`,`doctor`.`AcademicDegree` AS `AcademicDegree` from ((`user` join `doctor`) join `client`) where ((`user`.`UserID` = `doctor`.`UserID`) and (`user`.`UserID` = `client`.`UserID`)) ;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
