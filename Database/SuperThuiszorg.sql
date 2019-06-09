@@ -279,7 +279,7 @@ INSERT INTO `user` (`UserID`, `FirstName`, `LastName`, `Address`, `Residence`, `
 -- Indexen voor tabel `appointment`
 --
 ALTER TABLE `appointment`
-  ADD PRIMARY KEY (`DoctorID`),
+  ADD PRIMARY KEY (`AppointmentID`),
   ADD UNIQUE KEY `AppointmentID` (`AppointmentID`),
   ADD KEY `ClientAFK` (`ClientID`);
 
