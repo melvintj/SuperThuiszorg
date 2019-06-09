@@ -1,0 +1,8 @@
+INSERT INTO user(user.UserID, user.Email)
+VALUES ('0123', 'test@te.nl');
+
+INSERT INTO portal(portal.PasswordID, portal.Password)
+VALUES (100, 'mooiwachtwoordx');
+
+INSERT INTO userportal(userportal.UserID, userportal.PasswordID)
+VALUES ((SELECT user.UserID FROM user WHERE user.Email =  "test@te.nl"), (SELECT portal.PasswordID FROM portal WHERE portal.Password = 'mooiwachtwoordx'));
