@@ -97,6 +97,7 @@ ONDERSTAAND = HTML ONLY
       <div class="copyright">
          <p>
             © Copyright by Super Thuiszorg!
+             © Copyright by Super Thuiszorg!
          </p>
       </div>
    </body>
