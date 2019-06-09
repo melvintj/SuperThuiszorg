@@ -3,12 +3,12 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 06 jun 2019 om 16:07
+-- Gegenereerd op: 09 jun 2019 om 18:49
 -- Serverversie: 10.1.36-MariaDB
--- PHP-versie: 7.2.10
+-- PHP-versie: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,31 +18,41 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
+--
+-- Database: `superthuiszorg`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `appointment`
+--
+
 CREATE TABLE `appointment` (
   `DoctorID` int(11) NOT NULL,
-  `ClientID` int(11) NOT NULL,									
+  `ClientID` int(11) NOT NULL,
+  `AppointmentID` int(11) NOT NULL,
   `Date` date DEFAULT NULL,
   `Rating` int(11) DEFAULT NULL
-	
-	
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Gegevens worden geëxporteerd voor tabel `appointment`
 --
 
-INSERT INTO `appointment` (`DoctorID`, `ClientID`, `Date`, `Rating`) VALUES
-(1, 4, '2019-01-14', 5),
-(2, 4, '2019-01-16', 3),
-(3, 4, '2019-01-17', 4),
-(4, 5, '2019-01-16', 4),
-(5, 5, '2019-01-16', 4),
-(6, 7, '2019-01-16', 3),
-(8, 1, '2019-01-14', 1),
-(9, 1, '2019-01-14', 5),
-(10, 8, '2019-01-14', 5);
+INSERT INTO `appointment` (`DoctorID`, `ClientID`, `AppointmentID`, `Date`, `Rating`) VALUES
+(1, 4, 1, '2019-01-14', 5),
+(2, 4, 2, '2019-01-16', 3),
+(3, 4, 3, '2019-01-17', 4),
+(4, 5, 4, '2019-01-16', 4),
+(5, 5, 5, '2019-01-16', 4),
+(6, 7, 6, '2019-01-16', 3),
+(8, 1, 7, '2019-01-14', 1),
+(9, 1, 8, '2019-01-14', 5),
+(10, 8, 9, '2019-01-14', 5);
 
 -- --------------------------------------------------------
--- Database 'superthuiszorg'
+
 --
 -- Tabelstructuur voor tabel `client`
 --
@@ -258,7 +268,8 @@ INSERT INTO `user` (`UserID`, `FirstName`, `LastName`, `Address`, `Residence`, `
 (116, 'Anne', 'Pijman', 'Hazardweg 26', 'Den Bosch', 'pijman@live.nl', '06-854652214'),
 (117, 'Jasmina', 'van de Sluiters', 'Jasmijnstraat 45', 'Den Bosch', 'vandesluiters@live.nl', '06-548024896'),
 (118, 'Hasan', 'Amraoui', 'Kalkoenstraat 234', 'Best', 'amraouihasan@gmail.com', '06-895426963'),
-(119, 'Hans', 'van der Meer', 'Magrietstraat 65', 'Tilburg', 'meerhans@gmail.com', '06-525623659');
+(119, 'Hans', 'van der Meer', 'Magrietstraat 65', 'Tilburg', 'meerhans@gmail.com', '06-525623659'),
+(122, 'Melvin', 'Jansen', 'Mijnstraatje 1', 'Rotterdam', 'melvinjansen94@gmail.com', '06-12345678');
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -269,6 +280,7 @@ INSERT INTO `user` (`UserID`, `FirstName`, `LastName`, `Address`, `Residence`, `
 --
 ALTER TABLE `appointment`
   ADD PRIMARY KEY (`DoctorID`),
+  ADD UNIQUE KEY `AppointmentID` (`AppointmentID`),
   ADD KEY `ClientAFK` (`ClientID`);
 
 --
@@ -276,6 +288,7 @@ ALTER TABLE `appointment`
 --
 ALTER TABLE `client`
   ADD PRIMARY KEY (`ClientID`),
+  ADD UNIQUE KEY `ClientID` (`ClientID`),
   ADD KEY `UserCLFK` (`UserID`);
 
 --
@@ -290,6 +303,7 @@ ALTER TABLE `client availability`
 --
 ALTER TABLE `doctor`
   ADD PRIMARY KEY (`DoctorID`),
+  ADD UNIQUE KEY `DoctorID` (`DoctorID`),
   ADD KEY `UserIDFK` (`UserID`);
 
 --
@@ -317,11 +331,18 @@ ALTER TABLE `portal`
 -- Indexen voor tabel `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`UserID`);
+  ADD PRIMARY KEY (`UserID`),
+  ADD UNIQUE KEY `UserID` (`UserID`);
 
 --
 -- AUTO_INCREMENT voor geëxporteerde tabellen
 --
+
+--
+-- AUTO_INCREMENT voor een tabel `appointment`
+--
+ALTER TABLE `appointment`
+  MODIFY `AppointmentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT voor een tabel `client`
@@ -363,7 +384,7 @@ ALTER TABLE `portal`
 -- AUTO_INCREMENT voor een tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 
 --
 -- Beperkingen voor geëxporteerde tabellen
