@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 09 jun 2019 om 18:49
+-- Gegenereerd op: 09 jun 2019 om 21:15
 -- Serverversie: 10.1.36-MariaDB
 -- PHP-versie: 7.2.11
 
@@ -279,7 +279,7 @@ INSERT INTO `user` (`UserID`, `FirstName`, `LastName`, `Address`, `Residence`, `
 -- Indexen voor tabel `appointment`
 --
 ALTER TABLE `appointment`
-  ADD PRIMARY KEY (`AppointmentID`),
+  ADD PRIMARY KEY (`DoctorID`),
   ADD UNIQUE KEY `AppointmentID` (`AppointmentID`),
   ADD KEY `ClientAFK` (`ClientID`);
 
@@ -325,6 +325,7 @@ ALTER TABLE `log`
 --
 ALTER TABLE `portal`
   ADD PRIMARY KEY (`PasswordID`),
+  ADD UNIQUE KEY `Username` (`Username`),
   ADD KEY `UserFK` (`UserID`);
 
 --
