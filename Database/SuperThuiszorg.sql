@@ -33,7 +33,7 @@ CREATE TABLE `appointment` (
   `ClientID` int(11) NOT NULL,
   `Date` date DEFAULT NULL,
   `Rating` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `appointment`
@@ -60,7 +60,7 @@ CREATE TABLE `client` (
   `ClientID` int(11) NOT NULL,
   `InsuranceNumber` int(11) DEFAULT NULL,
   `UserID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `client`
@@ -89,7 +89,7 @@ CREATE TABLE `client availability` (
   `ClientID` int(11) NOT NULL,
   `DayofPart` varchar(20) DEFAULT NULL,
   `Date` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `client availability`
@@ -115,7 +115,7 @@ CREATE TABLE `doctor` (
   `DoctorID` int(11) NOT NULL,
   `AcademicDegree` varchar(20) DEFAULT NULL,
   `UserID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `doctor`
@@ -144,7 +144,7 @@ CREATE TABLE `doctor availability` (
   `Date` date DEFAULT NULL,
   `DayofPart` varchar(20) DEFAULT NULL,
   `DoctorID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `doctor availability`
@@ -173,7 +173,7 @@ CREATE TABLE `log` (
   `Description` varchar(100) DEFAULT NULL,
   `LogDate` date DEFAULT NULL,
   `ClientID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `log`
@@ -202,7 +202,7 @@ CREATE TABLE `portal` (
   `Username` varchar(20) DEFAULT NULL,
   `Password` varchar(20) DEFAULT NULL,
   `UserID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `portal`
@@ -241,7 +241,7 @@ CREATE TABLE `user` (
   `Residence` varchar(60) DEFAULT NULL,
   `Email` varchar(60) DEFAULT NULL,
   `TelNumber` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `user`
