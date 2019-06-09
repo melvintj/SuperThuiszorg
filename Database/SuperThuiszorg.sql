@@ -42,7 +42,7 @@ INSERT INTO `appointment` (`DoctorID`, `ClientID`, `Date`, `Rating`) VALUES
 (10, 8, '2019-01-14', 5);
 
 -- --------------------------------------------------------
-
+-- Database 'superthuiszorg'
 --
 -- Tabelstructuur voor tabel `client`
 --
