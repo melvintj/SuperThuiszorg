@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 09 jun 2019 om 21:15
+-- Gegenereerd op: 09 jun 2019 om 22:42
 -- Serverversie: 10.1.36-MariaDB
 -- PHP-versie: 7.2.11
 
@@ -281,6 +281,7 @@ INSERT INTO `user` (`UserID`, `FirstName`, `LastName`, `Address`, `Residence`, `
 ALTER TABLE `appointment`
   ADD PRIMARY KEY (`DoctorID`),
   ADD UNIQUE KEY `AppointmentID` (`AppointmentID`),
+  ADD UNIQUE KEY `DoctorID` (`DoctorID`),
   ADD KEY `ClientAFK` (`ClientID`);
 
 --
@@ -296,6 +297,7 @@ ALTER TABLE `client`
 --
 ALTER TABLE `client availability`
   ADD PRIMARY KEY (`ClientAvailableID`),
+  ADD UNIQUE KEY `ClientAvailableID` (`ClientAvailableID`),
   ADD KEY `ClientIDFK` (`ClientID`);
 
 --
@@ -311,6 +313,7 @@ ALTER TABLE `doctor`
 --
 ALTER TABLE `doctor availability`
   ADD PRIMARY KEY (`DoctorAvailableID`),
+  ADD UNIQUE KEY `DoctorAvailableID` (`DoctorAvailableID`),
   ADD KEY `DoctorFK` (`DoctorID`);
 
 --
@@ -318,6 +321,7 @@ ALTER TABLE `doctor availability`
 --
 ALTER TABLE `log`
   ADD PRIMARY KEY (`LogID`),
+  ADD UNIQUE KEY `LogID` (`LogID`),
   ADD KEY `ClientFK` (`ClientID`);
 
 --
@@ -325,6 +329,7 @@ ALTER TABLE `log`
 --
 ALTER TABLE `portal`
   ADD PRIMARY KEY (`PasswordID`),
+  ADD UNIQUE KEY `PasswordID` (`PasswordID`),
   ADD UNIQUE KEY `Username` (`Username`),
   ADD KEY `UserFK` (`UserID`);
 
@@ -379,7 +384,7 @@ ALTER TABLE `log`
 -- AUTO_INCREMENT voor een tabel `portal`
 --
 ALTER TABLE `portal`
-  MODIFY `PasswordID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=220;
+  MODIFY `PasswordID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=221;
 
 --
 -- AUTO_INCREMENT voor een tabel `user`
