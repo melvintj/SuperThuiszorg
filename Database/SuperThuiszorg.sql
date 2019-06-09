@@ -8,7 +8,7 @@
 -- PHP-versie: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
+
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,23 +18,14 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Database: `2.0superthuiszorg`
---
-
--- --------------------------------------------------------
-
---
--- Tabelstructuur voor tabel `appointment`
---
-
 CREATE TABLE `appointment` (
   `DoctorID` int(11) NOT NULL,
-  `ClientID` int(11) NOT NULL,
+  `ClientID` int(11) NOT NULL,									
   `Date` date DEFAULT NULL,
   `Rating` int(11) DEFAULT NULL
+	
+	
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 --
 -- Gegevens worden geëxporteerd voor tabel `appointment`
 --
