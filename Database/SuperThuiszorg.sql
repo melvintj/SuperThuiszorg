@@ -338,7 +338,8 @@ ALTER TABLE `portal`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`UserID`),
-  ADD UNIQUE KEY `UserID` (`UserID`);
+  ADD UNIQUE KEY `UserID` (`UserID`),
+  ADD UNIQUE KEY `Email` (`Email`);
 
 --
 -- AUTO_INCREMENT voor geëxporteerde tabellen
