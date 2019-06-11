@@ -99,7 +99,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <a href="index.html">Home</a>
         <a href="werkwijze.html">Werkwijze</a>
         <a href="overons.html">Over ons</a>
-        <a href="contact.html">Contact</a>
+        <a href="contact.php">Contact</a>
         <a class="active" href="inloggen.php">Inloggen</a>
         <a href="aanmelden.php">Aanmelden</a>
     </div>

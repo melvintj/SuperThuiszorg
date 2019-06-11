@@ -107,7 +107,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <a href="index.html">Home</a>
             <a href="werkwijze.html">Werkwijze</a>
             <a href="overons.html">Over ons</a>
-            <a href="contact.html">Contact</a>
+            <a href="contact.php">Contact</a>
             <a href="inloggen.php">Inloggen</a>
             <a class="active" href="aanmelden.php">Aanmelden</a>
         </div>

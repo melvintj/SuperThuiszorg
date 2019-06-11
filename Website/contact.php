@@ -1,3 +1,7 @@
+<?php>
+
+?>
+
 <!DOCTYPE html>
 <html> 
    <head>
@@ -11,7 +15,7 @@
         <a href="index.html">Home</a>
         <a href="werkwijze.html">Werkwijze</a>
         <a href="overons.html">Over ons</a>
-        <a class="active" href="contact.html">Contact</a>
+        <a class="active" href="contact.php">Contact</a>
         <a href="inloggen.php">Inloggen</a>
         <a href="aanmelden.php">Aanmelden</a>
     </div>
