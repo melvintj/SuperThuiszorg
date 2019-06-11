@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 10 jun 2019 om 14:31
+-- Gegenereerd op: 11 jun 2019 om 19:50
 -- Serverversie: 10.1.36-MariaDB
 -- PHP-versie: 7.2.11
 
@@ -114,15 +114,9 @@ CREATE TABLE `user` (
   `Address` varchar(60) DEFAULT NULL,
   `Residence` varchar(60) DEFAULT NULL,
   `Email` varchar(60) DEFAULT NULL,
-  `TelNumber` varchar(50) DEFAULT NULL
+  `TelNumber` varchar(50) DEFAULT NULL,
+  `InsuranceNumber` int(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Gegevens worden geëxporteerd voor tabel `user`
---
-
-INSERT INTO `user` (`UserID`, `Username`, `Password`, `FirstName`, `LastName`, `Address`, `Residence`, `Email`, `TelNumber`) VALUES
-(134, 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test');
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -141,8 +135,9 @@ ALTER TABLE `appointment`
 --
 ALTER TABLE `client`
   ADD PRIMARY KEY (`ClientID`),
-  ADD UNIQUE KEY `ClientID` (`ClientID`),
-  ADD KEY `UserIDClientFK` (`UserID`) USING BTREE;
+  ADD UNIQUE KEY `ClientID_2` (`ClientID`,`UserID`),
+  ADD KEY `ClientID` (`ClientID`,`UserID`),
+  ADD KEY `UserID` (`UserID`);
 
 --
 -- Indexen voor tabel `client availability`
@@ -156,8 +151,9 @@ ALTER TABLE `client availability`
 --
 ALTER TABLE `doctor`
   ADD PRIMARY KEY (`DoctorID`),
-  ADD UNIQUE KEY `DoctorID` (`DoctorID`),
-  ADD KEY `UserIDDoctorFK` (`UserID`) USING BTREE;
+  ADD UNIQUE KEY `DoctorID` (`DoctorID`,`UserID`),
+  ADD KEY `DoctorID_2` (`DoctorID`,`UserID`),
+  ADD KEY `UserID` (`UserID`);
 
 --
 -- Indexen voor tabel `doctor availability`
@@ -178,9 +174,8 @@ ALTER TABLE `log`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`UserID`),
-  ADD UNIQUE KEY `UserID` (`UserID`),
-  ADD UNIQUE KEY `Email` (`Email`),
-  ADD UNIQUE KEY `Username` (`Username`);
+  ADD UNIQUE KEY `UserID` (`UserID`,`Username`,`Email`),
+  ADD KEY `UserID_2` (`UserID`,`Username`,`Email`);
 
 --
 -- AUTO_INCREMENT voor geëxporteerde tabellen
@@ -190,43 +185,43 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT voor een tabel `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `AppointmentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `AppointmentID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT voor een tabel `client`
 --
 ALTER TABLE `client`
-  MODIFY `ClientID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ClientID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT voor een tabel `client availability`
 --
 ALTER TABLE `client availability`
-  MODIFY `ClientID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `ClientID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT voor een tabel `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `DoctorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `DoctorID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT voor een tabel `doctor availability`
 --
 ALTER TABLE `doctor availability`
-  MODIFY `DoctorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `DoctorID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT voor een tabel `log`
 --
 ALTER TABLE `log`
-  MODIFY `ClientID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `ClientID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT voor een tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Beperkingen voor geëxporteerde tabellen
@@ -243,7 +238,7 @@ ALTER TABLE `appointment`
 -- Beperkingen voor tabel `client`
 --
 ALTER TABLE `client`
-  ADD CONSTRAINT `UserIDClientFK` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `client_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`);
 
 --
 -- Beperkingen voor tabel `client availability`
@@ -255,7 +250,7 @@ ALTER TABLE `client availability`
 -- Beperkingen voor tabel `doctor`
 --
 ALTER TABLE `doctor`
-  ADD CONSTRAINT `UserIDDoctorFK` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `doctor_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`);
 
 --
 -- Beperkingen voor tabel `doctor availability`

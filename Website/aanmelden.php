@@ -14,7 +14,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $username_err = "Please enter a username.";
     } else{
         // Prepare a select statement
-        $sql = "SELECT UserID FROM portal WHERE Username = :username";
+        $sql = "SELECT Username FROM user WHERE Username = :username";
 
         if($stmt = $pdo->prepare($sql)){
             // Bind variables to the prepared statement as parameters
@@ -62,7 +62,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
 
         // Prepare an insert statement
-        $sql = "INSERT INTO portal (Username, Password) VALUES (:username, :password)";
+        $sql = "INSERT INTO user (Username, Password) VALUES (:username, :password)";
 
         if($stmt = $pdo->prepare($sql)){
             // Bind variables to the prepared statement as parameters
@@ -121,7 +121,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="wrapper">
                 <h2>Sign Up</h2>
                 <p>Please fill this form to create an account.</p>
-                <form action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF "]); ?>" method="post">
+                <form action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF"]); ?>" method="post">
                     <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                         <label>Username</label>
                         <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
