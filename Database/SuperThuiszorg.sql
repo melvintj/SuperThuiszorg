@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 11 jun 2019 om 19:50
--- Serverversie: 10.1.36-MariaDB
--- PHP-versie: 7.2.11
+-- Gegenereerd op: 12 jun 2019 om 11:00
+-- Serverversie: 10.1.38-MariaDB
+-- PHP-versie: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -114,8 +114,7 @@ CREATE TABLE `user` (
   `Address` varchar(60) DEFAULT NULL,
   `Residence` varchar(60) DEFAULT NULL,
   `Email` varchar(60) DEFAULT NULL,
-  `TelNumber` varchar(50) DEFAULT NULL,
-  `InsuranceNumber` int(20) DEFAULT NULL
+  `TelNumber` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
