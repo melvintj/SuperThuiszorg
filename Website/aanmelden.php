@@ -71,7 +71,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             // Set parameters
             $param_username = $username;
-            $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
+            //$param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
+            $param_password = $password; // Unhashed password TEMPORARY
 
             // Attempt to execute the prepared statement
             if($stmt->execute()){
@@ -121,7 +122,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="wrapper">
                 <h2>Sign Up</h2>
                 <p>Please fill this form to create an account.</p>
-                <form action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF"]); ?>" method="post">
+                <form action="" method="post">
                     <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                         <label>Username</label>
                         <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
