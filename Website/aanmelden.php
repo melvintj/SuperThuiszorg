@@ -11,7 +11,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Validate username
     if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter a username.";
+        $username_err = "Geef uw gebruikersnaam op.";
     } else{
         // Prepare a select statement
         $sql = "SELECT Username FROM user WHERE Username = :username";
@@ -26,12 +26,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Attempt to execute the prepared statement
             if($stmt->execute()){
                 if($stmt->rowCount() == 1){
-                    $username_err = "This username is already taken.";
+                    $username_err = "Deze gebruikersnaam is al in gebruik.";
                 } else{
                     $username = trim($_POST["username"]);
                 }
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "Er gaat iets verkeerd, probeer het nog eens.";
             }
         }
 
@@ -41,20 +41,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     // Validate password
     if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter a password.";     
+        $password_err = "Geef uw wachtwoord op.";     
     } elseif(strlen(trim($_POST["password"])) < 6){
-        $password_err = "Password must have atleast 6 characters.";
+        $password_err = "Het wachtwoord moet ten minste 6 karakters bevatten.";
     } else{
         $password = trim($_POST["password"]);
     }
 
     // Validate confirm password
     if(empty(trim($_POST["confirm_password"]))){
-        $confirm_password_err = "Please confirm password.";     
+        $confirm_password_err = "Bevestig uw wachtwoord.";     
     } else{
         $confirm_password = trim($_POST["confirm_password"]);
         if(empty($password_err) && ($password != $confirm_password)){
-            $confirm_password_err = "Password did not match.";
+            $confirm_password_err = "Wachtwoorden komen niet overeen.";
         }
     }
 
@@ -79,7 +79,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 // Redirect to login page
                 header("location: inloggen.php");
             } else{
-                echo "Something went wrong. Please try again later.";
+                echo "Er gaat iets verkeerd probeer het nog een keer.";
             }
         }
 
@@ -112,39 +112,35 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <a href="inloggen.php">Inloggen</a>
             <a class="active" href="aanmelden.php">Aanmelden</a>
         </div>
-
-        <br>
+        
         <h1>Aanmelden</h1>
 
         <div class="container">
-            <h2>Voor het aanmelden van onze dienstverlening moet u een account aanmaken:</h2>
-            <hr>
-            <div class="wrapper">
-                <h2>Sign Up</h2>
-                <p>Please fill this form to create an account.</p>
+            
+                <p>Voor het aanmelden van onze dienstverlening moet u een account aanmaken.</p>
                 <form action="" method="post">
                     <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                        <label>Username</label>
+                        <label>Gebruikersnaam</label>
                         <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
                         <span class="help-block"><?php echo $username_err; ?></span>
                     </div>
                     <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                        <label>Password</label>
+                        <label>Wachtwoord</label>
                         <input type="password" name="password" class="form-control" value="<?php echo $password; ?>">
                         <span class="help-block"><?php echo $password_err; ?></span>
                     </div>
                     <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-                        <label>Confirm Password</label>
+                        <label>Bevestig Wachtwoord</label>
                         <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
                         <span class="help-block"><?php echo $confirm_password_err; ?></span>
                     </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-primary" value="Submit">
+                    <div class="button">
+                        <input style= "color: #0068AC;background-color: #81EBFF;border-radius: 10px;width:240px;height:40px;font-weight:bold;font-size:24px;" type="submit" class="button" value="AANMELDEN">
 <!--                        <input type="reset" class="btn btn-default" value="Reset">-->
                     </div>
-                    <p>Already have an account? <a href="inloggen.php">Login here</a>.</p>
+                    <p>Heeft u al een account? <a href="inloggen.php">Log hier in</a>.</p>
                 </form>
-            </div>
+            
         </div>
         &nbsp;Bij het aanmaken van een account gaat u akkoord met onze <a href="#">Terms & Privacy</a>
         <br>

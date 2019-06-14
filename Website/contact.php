@@ -15,7 +15,7 @@
         <a href="aanmelden.php">Aanmelden</a>
     </div>
        <h1>Super Thuiszorg Contactformulier</h1>
-      <div class="subheading mb-5">
+      <div class="contact">
           Om contact met ons op te nemen kunt u ons bereiken op: <a href="mailto:melvinjansen94@gmail.com"><i class="fa fa-envelope-o" aria-hidden="true"></i>info@superthuiszorg.nl</a><br>
           Wij proberen u bericht binnen 5 werkdagen te beantwoorden.
                 </div>

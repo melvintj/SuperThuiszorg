@@ -20,14 +20,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     // Check if username is empty
     if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter username.";
+        $username_err = "Vul uw gebruikernaam in.";
     } else{
         $username = trim($_POST["username"]);
     }
     
     // Check if password is empty
     if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter your password.";
+        $password_err = "Vul uw wachtwoord in.";
     } else{
         $password = trim($_POST["password"]);
     }
@@ -65,15 +65,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             header("location: welcome.php");
                         } else{
                             // Display an error message if password is not valid
-                            $password_err = "The password you entered was not valid.";
+                            $password_err = "Het wachtwoord wat u opgeeft klopt niet.";
                         }
                     }
                 } else{
                     // Display an error message if username doesn't exist
-                    $username_err = "No account found with that username.";
+                    $username_err = "Geen account gevonden met deze gebruikersnaam.";
                 }
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "Er gaat iets mis, controleer uw gegevens en probeer het opnieuw.";
             }
         }
         
@@ -104,24 +104,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <a href="aanmelden.php">Aanmelden</a>
     </div>
       <br>
-      <div class="wrapper">
-        <h2>Login</h2>
-        <p>Please fill in your credentials to login.</p>
+      <div class="container">
+        <h2>Inloggen</h2>
+        <p>Geef uw uw gebruikersnaam en wachtwoord op en druk op inloggen.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <label>Username</label>
+                <label>Gebruikersnaam</label>
                 <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
                 <span class="help-block"><?php echo $username_err; ?></span>
             </div>    
             <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <label>Password</label>
+                <label>Wachtwoord</label>
                 <input type="password" name="password" class="form-control">
                 <span class="help-block"><?php echo $password_err; ?></span>
             </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Login">
+            <div class="button">
+                <input style= "color: #0068AC;background-color: #81EBFF;border-radius: 10px;width:240px;height:40px;font-weight:bold;font-size:24px;" type="submit" class="button" value="INLOGGEN">
             </div>
-            <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
+            <p>Heeft u nog geen account? <a href="aanmelden.php">Meld u zich hier aan.</a>.</p>
         </form>
     </div>
        <br><br><br><br>   
