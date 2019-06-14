@@ -12,7 +12,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <!DOCTYPE html>
 <html>
 <head>
-
+<meta charset="UTF-8">
+      <title>Super Thuiszorg</title>
+      <link rel="stylesheet" type="text/css" href="style.css">  
 </head>
 <body>
     <div class="topnav">
@@ -24,12 +26,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <a class="active" href="inloggen.php">Inloggen</a>
         <a href="aanmelden.php">Aanmelden</a>
     </div>
-    <div class="page-header">
-        <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our site.</h1>
+    <div class="content">
+        <h1>Hallo, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welkom op onze site.</h1>
     </div>
     <p>
-        <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
-        <a href="uitloggen.php" class="btn btn-danger">Sign Out of Your Account</a>
+        <a href="reset-password.php" class="button">Verander uw wachtwoord</a>
+        <a href="uitloggen.php" class="button">UITLOGGEN</a>
     </p>
 </body>
 </html>
