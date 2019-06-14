@@ -1,66 +1,33 @@
-<?php>
+<html> 
+   <head>
+      <meta charset="UTF-8">
+      <title>Super Thuiszorg</title>
+      <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+   <body>
+    <div class="topnav">
+        <img class="logo" src="Afbeeldingen/logo.jpg" alt="Super Thuiszorg logo" align="left">
+        <a href="index.html">Home</a>
+        <a href="werkwijze.html">Werkwijze</a>
+        <a href="overons.html">Over ons</a>
+        <a class="active" href="contact.php">Contact</a>
+        <a href="inloggen.php">Inloggen</a>
+        <a href="aanmelden.php">Aanmelden</a>
+    </div>
+       <h1>Super Thuiszorg Contactformulier</h1>
+      <div class="subheading mb-5">
+          Om contact met ons op te nemen kunt u ons bereiken op: <a href="mailto:melvinjansen94@gmail.com"><i class="fa fa-envelope-o" aria-hidden="true"></i>info@superthuiszorg.nl</a><br>
+          Wij proberen u bericht binnen 5 werkdagen te beantwoorden.
+                </div>
 
+</body>
 
-if (isset($_POST['name']) && isset($_POST['email'])) {
-
- $name = $_POST['name'];
- $email = $_POST['email'];
- $to = 'vincent.loeve88@gmail.com';
- $subject = "contact formulier";
- $body = '<html>
-
-    <body>
-
-     <h2>Title</h2>
-
-     <br>
-
-     <p>Name:<br>'.$name.'</p>
-
-     <p>Email:<br>'.$email.'</p>
-
-
-
-    </body>
-
-   </html>';
-
-
-
-//headers
-
-$headers  = "From: ".$name." <".$email.">\r\n";
-
-$headers .= "Reply-To: ".$email."\r\n";
-
-$headers .= "MIME-Version: 1.0\r\n";
-
-$headers .= "Content-type: text/html; charset-utf-8";
+</html> 
 
 
 
-//send
 
-$send = mail($to, $subject, $body, $headers);
-
-if ($send) {
-
- echo '<br>';
-
- echo "Verzending succesvol. Bedankt voor uw bericht.";
-
-} else {
-
- echo 'Helaas er ging iets mis, controleer uw gegevens.';
-
-}
-
-}
-
-?>
-
-?>
-
+<!--
 <!DOCTYPE html>
 <html> 
    <head>
@@ -131,3 +98,4 @@ if ($send) {
       </div>
    </body>
 </html>
+-->
