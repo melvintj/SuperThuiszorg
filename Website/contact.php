@@ -1,5 +1,64 @@
 <?php>
 
+
+if (isset($_POST['name']) && isset($_POST['email'])) {
+
+ $name = $_POST['name'];
+ $email = $_POST['email'];
+ $to = 'vincent.loeve88@gmail.com';
+ $subject = "contact formulier";
+ $body = '<html>
+
+    <body>
+
+     <h2>Title</h2>
+
+     <br>
+
+     <p>Name:<br>'.$name.'</p>
+
+     <p>Email:<br>'.$email.'</p>
+
+
+
+    </body>
+
+   </html>';
+
+
+
+//headers
+
+$headers  = "From: ".$name." <".$email.">\r\n";
+
+$headers .= "Reply-To: ".$email."\r\n";
+
+$headers .= "MIME-Version: 1.0\r\n";
+
+$headers .= "Content-type: text/html; charset-utf-8";
+
+
+
+//send
+
+$send = mail($to, $subject, $body, $headers);
+
+if ($send) {
+
+ echo '<br>';
+
+ echo "Verzending succesvol. Bedankt voor uw bericht.";
+
+} else {
+
+ echo 'Helaas er ging iets mis, controleer uw gegevens.';
+
+}
+
+}
+
+?>
+
 ?>
 
 <!DOCTYPE html>
@@ -27,38 +86,19 @@
              <table>
                <fieldset>
                   <tr>
-                     <th class="alignLeft">Voornaam:</th>
-                     <th class="alignLeft"><input style="border-radius: 10px" placeholder="" type="text" tabindex="1" required autofocus></th>
+                     <th class="alignLeft">Voor en Achternaam:</th>
+                     <th class="alignLeft">
+                        <input style="border-radius: 10px" placeholder="Voornaam" type="text" name="name" tabindex="1" required autofocus></th>
                   </tr>
                </fieldset>
-               <fieldset>
-                  <tr>
-                     <th class="alignLeft">Achternaam:</th>
-                     <th class="alignLeft"><input style="border-radius: 10px" placeholder="" type="text" tabindex="2" required></th>
-                  </tr>
-               </fieldset>
+               
                <fieldset>
                   <tr>
                      <th class="alignLeft">E-mail:</th>
-                     <th class="alignLeft"><input style="border-radius: 10px" placeholder="" type="email" tabindex="3" required></th>
+                     <th class="alignLeft"><input style="border-radius: 10px" placeholder="Uw E-mailadres" type="email" name="email" tabindex="3" required></th>
                   </tr>
                </fieldset>
-               <fieldset>
-                  <tr>
-                     <th class="alignLeft">Telnr.:</th>
-                     <th class="alignLeft"><input style="border-radius: 10px" placeholder="" type="tel" tabindex="4"></th>
-                  </tr>
-               </fieldset>
-               <fieldset>
-                  <tr>
-                     <th class="alignLeft">
-                        Website url:
-                     </th>
-                     <th class="alignLeft">
-                        <input style="border-radius: 10px" placeholder="" type="url" tabindex="4">
-                     </th>
-                  </tr>
-               </fieldset>
+             
                <fieldset>
                   <tr>
                      <th>
